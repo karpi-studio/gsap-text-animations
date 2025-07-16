@@ -100,14 +100,19 @@
       };
 
       const tl = matched.animate(split, el, options);
-      if (tl) {
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top 60%",
-          onEnter: () => tl.play(),
-          onLeaveBack: () => tl.reverse()
-        });
-      }
+  if (tl) {
+  const scrollTriggerAttr = el.getAttribute("scroll-trigger");
+  const reverse = el.getAttribute("reverse") !== "false"; // default true
+
+  ScrollTrigger.create({
+    trigger: el,
+    start: scrollTriggerAttr || "top 60%",
+    onEnter: () => tl.play(),
+    onLeaveBack: () => {
+      if (reverse) tl.reverse();
+    }
+  });
+}
 
       gsap.set(el, { opacity: 1 });
     });
