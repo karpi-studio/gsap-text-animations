@@ -88,11 +88,12 @@
       });
 
       const options = {
-        duration: parseFloatAttr(el, "duration", null),
-        stagger: el.hasAttribute("stagger") ? { amount: parseFloat(el.getAttribute("stagger")) } : null,
-        ease: parseAttr(el, "ease", null),
-        scrub: el.hasAttribute("scrub") ? el.getAttribute("scrub") === "true" : null
-      };
+  duration: parseFloatAttr(el, "duration", null),
+  delay: parseFloatAttr(el, "delay", 0), 
+  stagger: el.hasAttribute("stagger") ? { amount: parseFloat(el.getAttribute("stagger")) } : null,
+  ease: parseAttr(el, "ease", null),
+  scrub: el.hasAttribute("scrub") ? el.getAttribute("scrub") === "true" : null
+};
 
       const tl = matched.animate(split, el, options);
   if (tl) {
