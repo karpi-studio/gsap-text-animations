@@ -24,6 +24,7 @@
   { attr: "letters-pulse-in", animate: (t, el, o = {}) => gsap.timeline({ paused: true }).from(t.chars, { scale: 0.4, opacity: 0, duration: o.duration || 0.25, delay: o.delay || 0, ease: o.ease || "back.out(2)", stagger: o.stagger || { amount: 0.5 } }) },
   { attr: "letters-blur-in", animate: (t, el, o = {}) => gsap.timeline({ paused: true }).from(t.chars, { opacity: 0, filter: "blur(10px)", duration: o.duration || 0.3, delay: o.delay || 0, ease: o.ease || "power2.out", stagger: o.stagger || { amount: 0.5 } }) },
   { attr: "words-rise-drop", animate: (t, el, o = {}) => { const tl = gsap.timeline({ paused: true }); tl.fromTo(t.words, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: o.duration || 0.5, delay: o.delay || 0, ease: o.ease || "power4.out", stagger: o.stagger || { amount: 0.4 } }); tl.to(t.words, { y: 10, duration: 0.3, ease: "power1.inOut", stagger: o.stagger || { amount: 0.4 } }, "-=0.3"); return tl; } },
+  { attr: "lines-slide-up", animate: (t, el, o = {}) => gsap.timeline({ paused: true }).from(t.lines, { yPercent: 100, opacity: 0, duration: o.duration || 0.6, delay: o.delay || 0, ease: o.ease || "power2.out", stagger: o.stagger || { amount: 0.6 } }) },
 
 
  // ✅ Clip Effects
@@ -82,10 +83,11 @@
       if (!matched) return;
 
       const split = new SplitText(el, {
-        type: "words,chars",
-        wordsClass: "word",
-        charsClass: "char"
-      });
+      type: "lines,words,chars",
+      linesClass: "line",
+      wordsClass: "word",
+      charsClass: "char"
+});
 
 
      const options = {
