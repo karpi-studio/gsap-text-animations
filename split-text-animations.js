@@ -87,9 +87,10 @@
         charsClass: "char"
       });
 
-      const options = {
+
+     const options = {
   duration: parseFloatAttr(el, "duration", null),
-  delay: parseFloatAttr(el, "delay", 0), 
+  delay: parseFloatAttr(el, "delay", 0), // ✅ ADD THIS LINE
   stagger: el.hasAttribute("stagger") ? { amount: parseFloat(el.getAttribute("stagger")) } : null,
   ease: parseAttr(el, "ease", null),
   scrub: el.hasAttribute("scrub") ? el.getAttribute("scrub") === "true" : null
